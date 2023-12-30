@@ -23,7 +23,10 @@ function calculateTokenTime() {
     var currentTokens = parseInt(document.getElementById("current_tokens").value);
     var desiredTokens = parseInt(document.getElementById("desired_tokens").value);
     var evolution = parseInt(document.getElementById("evolution").value);
-    var timeInSeconds = Math.floor((desiredTokens - currentTokens) / evolution * 60);
+    var chests = parseInt(document.getElementById("chests").value);
+    var chest_val = parseInt(document.getElementById("chest_val").value);
+    var chestsExpectVal = Math.floor(chests * chest_val);
+    var timeInSeconds = Math.floor((desiredTokens - currentTokens - chestsExpectVal) / evolution * 60);
 
     var days = Math.floor(timeInSeconds / (24 * 60 * 60));
     var hours = Math.floor((timeInSeconds % (24 * 60 * 60)) / (60 * 60));
