@@ -69,17 +69,25 @@
 <br>
 <h2>Gem/Token Time Calculator</h2>
 <table>
+    <tr>
+    <td>Desired Gems/Tokens Amount:</td>
+    <td colspan="3"><input type="number" id="desired_tokens"></td>
+  </tr>
   <tr>
     <td>Current Gems/Tokens:</td>
-    <td><input type="number" id="current_tokens"></td>
-    <td>Tick Rate:</td>
+    <td><input type="number" id="current_tokens" value="0"></td>
+    <td>Tick Rate/min:</td>
     <td>
       <input type="number" id="evolution">
     </td>
   </tr>
   <tr>
-    <td>Desired Amount:</td>
-    <td colspan="3"><input type="number" id="desired_tokens"></td>
+    <td>Gems/Tokens Chest Value:</td>
+    <td><input type="number" id="chest_val" value="0"></td>
+    <td>Expected to Collect:</td>
+    <td>
+      <input type="number" id="chests" value="0">
+    </td>
   </tr>
   <tr>
     <td><button onclick="calculateTokenTime()">Calculate Time</button></td>
