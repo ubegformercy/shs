@@ -1,4 +1,41 @@
+document.getElementById("daily_quest").addEventListener("change", calculateDailyCoins);
+document.getElementById("weekly_quest").addEventListener("change", calculateWeeklyCoins);
+document.getElementById("weeks").addEventListener("change", calculateWeeklyCoins);
+document.getElementById("days").addEventListener("change", calculateDailyCoins);
+document.getElementById("desired_tokens").addEventListener("change", calculateTokenTime);
+document.getElementById("evolution").addEventListener("change", calculateTokenTime);
+document.getElementById("current_tokens").addEventListener("change", calculateTokenTime);
+document.getElementById("chest_val").addEventListener("change", calculateExpectedChestCoins);
+document.getElementById("chests").addEventListener("change", calculateExpectedChestCoins);
 
+
+function calculateDailyCoins() {
+    var days = parseInt(document.getElementById("days").value);
+    var daily_quest = parseInt(document.getElementById("daily_quest").value);
+    var dailyCoinsPerQuest = 100;
+    var dailyCoins = (daily_quest * (daily_quest + 1) / 2) * dailyCoinsPerQuest * days;
+
+    document.getElementById("dailyCoins").innerHTML = dailyCoins.toLocaleString() + " Tokens";
+    calculateTokenTime();
+}
+
+function calculateExpectedChestCoins() {
+    var chests = parseInt(document.getElementById("chests").value);
+    var chest_val = parseInt(document.getElementById("chest_val").value);
+    var chestsExpectVal = Math.floor(chests * chest_val);
+
+    document.getElementById("chestsExpectVal").innerHTML = chestsExpectVal.toLocaleString() + " Gems/Tokens";
+    calculateTokenTime();
+}
+function calculateWeeklyCoins() {
+    var weeks = parseInt(document.getElementById("weeks").value);
+    var weekly_quest = parseInt(document.getElementById("weekly_quest").value);
+    var weeklyCoinsPerQuest = 25000;
+    var weeklyCoins = (weekly_quest * (weekly_quest + 1) / 2) * weeklyCoinsPerQuest * weeks;
+
+    document.getElementById("weeklyCoins").innerHTML = weeklyCoins.toLocaleString() + " Tokens";
+    calculateTokenTime();
+}
 
 function calculatePowerTime() {
     const desiredPower = parseFloat(document.getElementById('desiredPower').value);
@@ -25,14 +62,28 @@ function calculateTokenTime() {
     var evolution = parseInt(document.getElementById("evolution").value);
     var chests = parseInt(document.getElementById("chests").value);
     var chest_val = parseInt(document.getElementById("chest_val").value);
+    var daily_quest = parseInt(document.getElementById("daily_quest").value);
+    var weekly_quest = parseInt(document.getElementById("weekly_quest").value);
+    var days = parseInt(document.getElementById("days").value);
+    var weeks = parseInt(document.getElementById("weeks").value);
+    var weeklyCoinsPerQuest = 25000;
+    var weeklyCoins = (weekly_quest * (weekly_quest + 1) / 2) * weeklyCoinsPerQuest * weeks;
+    var dailyCoinsPerQuest = 100;
+    var dailyCoins = (daily_quest * (daily_quest + 1) / 2) * dailyCoinsPerQuest * days;
     var chestsExpectVal = Math.floor(chests * chest_val);
-    var timeInSeconds = Math.floor((desiredTokens - currentTokens - chestsExpectVal) / evolution * 60);
+    var timeInSeconds = Math.floor((desiredTokens - currentTokens - chestsExpectVal - dailyCoins - weeklyCoins) / evolution * 60);
+    var tokens = Math.floor(currentTokens + chestsExpectVal + dailyCoins + weeklyCoins); 
 
     var days = Math.floor(timeInSeconds / (24 * 60 * 60));
     var hours = Math.floor((timeInSeconds % (24 * 60 * 60)) / (60 * 60));
     var minutes = Math.floor((timeInSeconds % (60 * 60)) / 60);
 
+if (days < 0 || hours < 0 || minutes < 0) {
+    document.getElementById("results").innerHTML = "Current Gems/Tokens " + tokens +"  exceeds Desired amount. Please check the data entered";
+} else {
     document.getElementById("results").innerHTML =  padZero(days) + " Days  / " + padZero(hours) + " Hours   / " + padZero(minutes) + " Minutes";
+}
+
 }
 
 function padZero(num) {
@@ -88,7 +139,7 @@ function calculate() {
   var result3 = 3600 * multiplier * zone * rank * evolve * wisp * boost * upgrades;
   var result4 = 86400 * multiplier * zone * rank * evolve * wisp * boost * upgrades;
   var result5 = 604800 * multiplier * zone * rank * evolve * wisp * boost * upgrades;
-
+  
   document.getElementById("result1").innerHTML = formatNumber(result1) + " Per Second";
   document.getElementById("result2").innerHTML = formatNumber(result2) + " Per Minute";
   document.getElementById("result3").innerHTML = formatNumber(result3) + " Per Hour";
