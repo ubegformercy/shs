@@ -87,44 +87,119 @@
     <td>Expected to Collect:</td>
     <td>
       <input type="number" id="chests" value="0">
+        <p id="chestsExpectVal"></p>
     </td>
   </tr>
-  <tr>
-    <td><button onclick="calculateTokenTime()">Calculate Time</button></td>
-    <td colspan="3" id="results"></td>
-  </tr>
-</table>
+    <tr>
+    <td>Daily Quests Expected to Complete:</td>
+    <td> <select id="daily_quest">
+          <option value="0">0 </option>
+          <option value="1">100 </option>
+          <option value="2">1K </option>
+          <option value="3">10K </option>
+          <option value="4">100K </option>
+          <option value="5">1M </option>
+          <option value="6">10M </option>
+          <option value="7">100M </option>
+          <option value="8">1B </option>
+          <option value="9">10B </option>
+          <option value="10">100B </option>
+          <option value="11">1T </option>
+          <option value="12">10T </option>
+          <option value="13">100T </option>
+          <option value="14">1Qa </option>
+          <option value="15">10Qa </option>
+          <option value="16">100Qa </option>
+          <option value="17">1Qi </option>
+          <option value="18">10Qi </option>
+          <option value="19">100Qi </option>
+          <option value="20">1Sx </option>
+          <option value="21">10Sx </option>
+          <option value="22">100Sx </option>
+          <option value="23">1Sp </option>
+          <option value="24">10Sp </option>
+          <option value="25">100Sp </option>
+          <option value="26">1Oc </option>
+          <option value="27">10Oc </option>
+          <option value="28">100Oc </option>
+          <option value="29">1N </option>
+          <option value="30">10N </option>
+          <option value="31">100N </option>
+          <option value="32">1Dc </option>
+          </select>
+              <select id="days">
+        <option value="0">0 </option>
+        <option value="1">1 Day </option>
+        <option value="2">2 Days </option>
+        <option value="3">3 Days</option>
+        <option value="4">4 Days </option>
+        <option value="5">5 Days </option>
+        <option value="6">6 Days </option>
+        <option value="7">7 Days </option>
+        </select>
+  <p id="dailyCoins"></p>
+      </td>
+    <td>Weekly Quests Expected to Complete:</td>
+    <td>
+       <select id="weekly_quest">
+        <option value="0">0 </option>
+        <option value="1">1M </option>
+        <option value="2">1B </option>
+        <option value="3">1T </option>
+        <option value="4">1Qa </option>
+        <option value="5">1Qi </option>
+        <option value="6">1Sx </option>
+        <option value="7">1Sp </option>
+        <option value="8">1Oc </option>
+        <option value="9">1No </option>
+        <option value="10">1Dc </option>
+        </select>
+        <select id="weeks">
+        <option value="0">0 </option>
+        <option value="1">1 weeks </option>
+        <option value="2">2 weeks </option>
+        <option value="3">3 weeks</option>
+        <option value="4">4 weeks </option>
+        </select>
+     <p id="weeklyCoins"></p> 
+      </td>
+    </tr>
+    <tr>
+      <td><button onclick="calculateTokenTime()">Calculate Time</button></td>
+      <td colspan="3" id="results"></td>
+    </tr>
+  </table>
 
-<br>
-<h2>Stats Calculator</h2>
-<h3>DOESNT WORK YET - UNDER CONSTRUCTION</h3>
-<table>
-  <tr>
-    <td>Multi</td>
-    <td>Zone</td>
-    <td>Realm</td>
-    <td>Fusion</td>
-  </tr>
-  <tr>
-    <td>
-  <select id="multiplier"></select>
-    </td>
-    <td>
-      <select id="zone">
-        <option value="1">Nothing</option>
-        <option value="2">100</option>
-        <option value="5">1K</option>
-        <option value="15">50K</option>
-        <option value="35">1M</option>
-        <option value="100">10M</option>
-        <option value="350">500M</option>
-        <option value="1500">20B</option>
-        <option value="9000">5T</option>
-        <option value="45000">900T</option>
-        <option value="170000">250Qa</option>
-        <option value="1000000">5Qi</option>
-        <option value="7000000">65Sx</option>
-        <option value="50000000">350Sp</option>
+  <br>
+  <h2>Stats Calculator</h2>
+  <h3>DOESNT WORK YET - UNDER CONSTRUCTION</h3>
+  <table>
+    <tr>
+      <td>Multi</td>
+      <td>Zone</td>
+      <td>Realm</td>
+      <td>Fusion</td>
+    </tr>
+    <tr>
+      <td>
+    <select id="multiplier"></select>
+      </td>
+      <td>
+        <select id="zone">
+          <option value="1">Nothing</option>
+          <option value="2">100</option>
+          <option value="5">1K</option>
+          <option value="15">50K</option>
+          <option value="35">1M</option>
+          <option value="100">10M</option>
+          <option value="350">500M</option>
+          <option value="1500">20B</option>
+          <option value="9000">5T</option>
+          <option value="45000">900T</option>
+          <option value="170000">250Qa</option>
+          <option value="1000000">5Qi</option>
+          <option value="7000000">65Sx</option>
+          <option value="50000000">350Sp</option>
       </select>
     </td>
     <td>
@@ -978,5 +1053,6 @@
       generateExponentialOptions();
     });
   </script>
+
 </body>
 </html>
